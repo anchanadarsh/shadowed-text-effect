@@ -1,0 +1,78 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap");
+
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+}
+
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.wrap {
+  display: flex;
+  flex-direction: column;
+}
+
+.wrap .item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 120px 200px 50px;
+}
+
+.shadowed_text_wrap {
+  position: relative;
+
+  .shadowed_text {
+    line-height: 1;
+    text-transform: uppercase;
+    font-size: 10vmin;
+    font-weight: 600;
+    -webkit-text-fill-color: white;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: rgba(255, 0, 0, 0.001);
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: all 0.3s ease-in;
+
+    @for $i from 0 to 29 {
+      &:nth-child(#{$i + 1}) {
+        z-index: $i + 1;
+        -webkit-text-stroke-color: rgba(255, 0, 0, $i * 1 / 30);
+      }
+    }
+
+    &:nth-child(1) {
+      position: relative;
+    }
+  }
+
+  &[shadowTo="right"] {
+    &:hover,
+    &.hovered {
+      .shadowed_text {
+        @for $i from 0 to 29 {
+          &:nth-child(#{$i + 1}) {
+            transform: translate($i * 4px, $i * -4px);
+          }
+        }
+      }
+    }
+  }
+
+  &[shadowTo="left"] {
+    &:hover,
+    &.hovered {
+      .shadowed_text {
+        @for $i from 0 to 29 {
+          &:nth-child(#{$i + 1}) {
+            transform: translate($i * -4px, $i * -4px);
+          }
+        }
+      }
+    }
+  }
+}

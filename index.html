@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="item">
+        <div class="shadowed_text_wrap" shadowTo="left">
+          <p class="shadowed_text">short text</p>
+        </div>
+      </div>
+      <div class="item">
+        <div class="shadowed_text_wrap" shadowTo="right">
+          <p class="shadowed_text">when the text is too long</p>
+        </div>
+      </div>
+      <div class="item">
+        <div class="shadowed_text_wrap hovered" shadowTo="left">
+          <p class="shadowed_text">short text</p>
+        </div>
+      </div>
+      <div class="item">
+        <div class="shadowed_text_wrap hovered" shadowTo="right">
+          <p class="shadowed_text">when the text is too long</p>
+        </div>
+      </div>
+    </div>
+
+    <script src="jquery-1.11.2.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        $(".shadowed_text_wrap").each(function () {
+          for (var i = 0; i < 29; i++) {
+            $(this).append($(this).find(".shadowed_text:nth-child(1)").clone());
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
